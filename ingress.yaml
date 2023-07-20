@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    app: spring-petclinic
+  name: spring-petclinic
+spec:
+  rules:
+  - host: petclinic.10.41.79.200.sslip.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: spring-petclinic
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
